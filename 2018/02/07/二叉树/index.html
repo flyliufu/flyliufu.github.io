@@ -102,10 +102,10 @@
 <meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookupBST.jpg">
 <meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookup12.jpg">
 <meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookup15.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/worst-case.png">
+<meta property="og:image" content="https://flyliufu.github.io/images/二叉树/worst-case.png">
 <meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/fulltree.jpg">
 <meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/insert15.jpg">
-<meta property="og:updated_time" content="2018-02-08T06:21:51.922Z">
+<meta property="og:updated_time" content="2018-02-08T06:29:14.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树">
 <meta name="twitter:description" content="二叉查找树 Binary Search Tree转载请注明文章出处，如有侵权请联系 flyliufu@gmail.com 立删。
@@ -454,7 +454,7 @@
 </ol>
 <p>BST 中查找一个值需要消耗多少时间呢？注意一次查找总是从根节点向下到叶节点，在最坏的情况下走过每一个节点最终到叶节点，因此，最坏情况的时间是从根到叶节点最长路径的长度的比例（树的高度）</p>
 <p>通常情况下，我们想知道函数查找存储在树中的值的数量需要多少时间，换句话来说，BST 中节点数量和树高度的关系是什么？这要依赖树的”图形（shape）”。在最坏的情况下所有的节点只有一个子节点，这个树本质上来说就是一个链表结构。举个栗子：</p>
-<p><img src="../images/二叉树/worst-case.png" alt=""></p>
+<p><img src="/images/二叉树/worst-case.png" alt=""></p>
 <p>这棵树有5个节点，并且高度也是5，当搜索数值在16 到 19 或 21 到 19 的时候需要从根节点到叶节点全走一遍，（也包括值为20 的节点）需要与树中节点数量成比的时间。</p>
 <p>在最好的情况下所有节点都有两个子节点且所有叶节点在相同的深度。栗子：</p>
 <p><img src="../images/二叉树/fulltree.jpg" alt=""></p>
