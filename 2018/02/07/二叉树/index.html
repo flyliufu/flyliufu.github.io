@@ -1,0 +1,962 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVA,Algorithms," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="二叉查找树 Binary Search Tree转载请注明文章出处，如有侵权请联系 flyliufu@gmail.com 立删。
+概述二叉查找树（binary search tree , BST）是一种特殊且重要的二叉树，在BST 中每个节点存储一些信息包括一个唯一的键值对（Key Value），并且还有可能有一些相关联的数据。一个二叉树当且仅当（iff）是二叉查找树时候，它的每个节点n在二叉树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树">
+<meta property="og:url" content="https://flyliufu.github.io/2018/02/07/二叉树/index.html">
+<meta property="og:site_name" content="My way of learning">
+<meta property="og:description" content="二叉查找树 Binary Search Tree转载请注明文章出处，如有侵权请联系 flyliufu@gmail.com 立删。
+概述二叉查找树（binary search tree , BST）是一种特殊且重要的二叉树，在BST 中每个节点存储一些信息包括一个唯一的键值对（Key Value），并且还有可能有一些相关联的数据。一个二叉树当且仅当（iff）是二叉查找树时候，它的每个节点n在二叉树">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/bst1.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/bst2.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/sameBSTs.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/question1.png">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookupBST.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookup12.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookup15.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/worst-case.png">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/fulltree.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/insert15.jpg">
+<meta property="og:updated_time" content="2018-02-08T06:09:44.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二叉树">
+<meta name="twitter:description" content="二叉查找树 Binary Search Tree转载请注明文章出处，如有侵权请联系 flyliufu@gmail.com 立删。
+概述二叉查找树（binary search tree , BST）是一种特殊且重要的二叉树，在BST 中每个节点存储一些信息包括一个唯一的键值对（Key Value），并且还有可能有一些相关联的数据。一个二叉树当且仅当（iff）是二叉查找树时候，它的每个节点n在二叉树">
+<meta name="twitter:image" content="https://flyliufu.github.io/../images/二叉树/bst1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://flyliufu.github.io/2018/02/07/二叉树/"/>
+
+
+
+
+
+  <title> 二叉树 | My way of learning </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My way of learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://flyliufu.github.io/2018/02/07/二叉树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fu Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My way of learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                二叉树
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-07T13:50:42+08:00">
+                2018-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2018/02/07/二叉树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/07/二叉树/" class="leancloud_visitors" data-flag-title="二叉树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="二叉查找树-Binary-Search-Tree"><a href="#二叉查找树-Binary-Search-Tree" class="headerlink" title="二叉查找树 Binary Search Tree"></a>二叉查找树 Binary Search Tree</h1><p>转载请注明<a href="http://pages.cs.wisc.edu/~vernon/cs367/notes/9.BST.html" target="_blank" rel="external">文章出处</a>，如有侵权请联系 flyliufu@gmail.com 立删。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>二叉查找树（binary search tree , BST）是一种特殊且重要的二叉树，在<code>BST</code> 中每个节点存储一些信息包括一个唯一的键值对（Key Value），并且还有可能有一些相关联的数据。一个二叉树当且仅当（iff）是二叉查找树时候，它的每个节点n在二叉树中应满足：</p>
+<pre><code>1. 所有n 的左子树中的 key 值都应该小于 n 的 key 值，并且
+2. 所有 n 的右子树中的 key 值都应大于 n 的 key 值。
+</code></pre><p>注意：如果允许相同的 key 值出现，那么该节点即可以在 n 的左子树，也可以在 n 的右子树（但不能同时在两边），在这个前提下，下面我们的教程假设不允许重复值出现。</p>
+<p>​    </p>
+<p>​    下面是一些每个节点仅仅存储了一个整型数值的 BST </p>
+<p><img src="../images/二叉树/bst1.jpg" alt="BST"></p>
+<p>​    </p>
+<p>​    下面这些不是 BST</p>
+<p><img src="../images/二叉树/bst2.jpg" alt="非 BST"></p>
+<p>左边这个5比6小（应该在左子树4的右子节点），右边这个6比7小（应该在5 的右子节点）。</p>
+<p>注意不止一种 BST 可以存储相同的键值对，举个栗子下面这张图中的两个 BST 都是存储了相同的整型键：</p>
+<p><img src="../images/二叉树/sameBSTs.jpg" alt="非 BST">    </p>
+<p>二叉搜索树很重要的原因是使用BST可以有效地执行以下操作：</p>
+<pre><code>1. 添加键值对
+2. 决定一个键值对在树中的位置
+3. 从树中删除键值对
+4. 打印排序后的所有键值对
+</code></pre><hr>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>以下那些二叉树是BST？哪些不是？为什么？</li>
+<li>用什么排序（preorder 先根排序, postorder 后根排序, inorder 中根排序, or level-order） 可以以顺序输出节点值？</li>
+</ol>
+<p><img src="../images/二叉树/question1.png" alt="非 BST"></p>
+<hr>
+<h2 id="实现二叉搜索树"><a href="#实现二叉搜索树" class="headerlink" title="实现二叉搜索树"></a>实现二叉搜索树</h2><p>为了实现一个二叉搜索树（BST）我们将要使用两个类：一个是树节点（tree node）、一个是二叉搜索树本身，下面定义的类是假设节点只存储键值，没有关联数据。因为大多数的 BST 操作都是比较 key 值，我们把 key 的类型设置为<code>Comparable</code> (不是 <code>Object</code>)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTreenode</span> </span>&#123;</div><div class="line">   <span class="comment">// *** fields ***</span></div><div class="line">   <span class="keyword">private</span> Comparable key;</div><div class="line">   <span class="keyword">private</span> BinaryTreenode left, right;</div><div class="line"></div><div class="line">   <span class="comment">// *** methods ***</span></div><div class="line"></div><div class="line">   <span class="comment">// constructor</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">BinaryTreenode</span><span class="params">(Comparable k, BinaryTreenode l, BinaryTreenode r)</span> </span>&#123;</div><div class="line">       key = k;</div><div class="line">       left = l;</div><div class="line">       right = r;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">// access to fields</span></div><div class="line">   <span class="function"><span class="keyword">public</span> Comparable <span class="title">getKey</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> key;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> BinaryTreenode <span class="title">getLeft</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> left;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> BinaryTreenode <span class="title">getRight</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> right;&#125;</div><div class="line"></div><div class="line">   <span class="comment">// change fields</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(Comparable k)</span> </span>&#123;key = k;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLeft</span><span class="params">(BinaryTreenode l)</span> </span>&#123;left = l;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRight</span><span class="params">(BinaryTreenode r)</span> </span>&#123;right = r;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BST</span> </span>&#123;</div><div class="line">  <span class="comment">// *** fields ***</span></div><div class="line">  <span class="keyword">private</span> BinaryTreenode root; <span class="comment">// ptr to the root of the BST</span></div><div class="line"></div><div class="line">  <span class="comment">// *** methods ***</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BST</span><span class="params">()</span> </span>&#123; root = <span class="keyword">null</span>; &#125; <span class="comment">// constructor</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Comparable key)</span> <span class="keyword">throws</span> DuplicateException </span>&#123;...&#125;</div><div class="line">      <span class="comment">// add key to this BST; error if it is already there</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Comparable key)</span> </span>&#123;...&#125;</div><div class="line">      <span class="comment">// remove the node containing key from this BST if it is there;</span></div><div class="line">      <span class="comment">// otherwise, do nothing</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">lookup</span><span class="params">(Comparable key)</span> </span>&#123;...&#125;</div><div class="line">     <span class="comment">// if key is in this BST, return true; otherwise, return false</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(PrintWriter p)</span> </span>&#123;...&#125;</div><div class="line">     <span class="comment">// print the values in this BST in sorted order (to p)</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了实现 BST 对应每个 key 存储数据我们需要使用下列定义类：(和上面有些不一样，我不会标红)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTreenode</span> </span>&#123;</div><div class="line">   <span class="comment">// *** fields ***</span></div><div class="line">   <span class="keyword">private</span> Comparable key;</div><div class="line">   <span class="keyword">private</span> Object data;</div><div class="line">   <span class="keyword">private</span> BinaryTreenode left, right;</div><div class="line"></div><div class="line">   <span class="comment">// *** methods ***</span></div><div class="line"></div><div class="line">   <span class="comment">// constructor</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">BinaryTreenode</span><span class="params">(Comparable k, Object d, BinaryTreenode l, BinaryTreenode r)</span> </span>&#123;</div><div class="line">       key = k;</div><div class="line">       data = d;</div><div class="line">       left = l;</div><div class="line">       right = r;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   ...</div><div class="line">   <span class="function"><span class="keyword">public</span> Object <span class="title">getData</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> data;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData</span><span class="params">(Object ob)</span> </span>&#123; data = ob; &#125;</div><div class="line">   ...</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BST</span> </span>&#123;</div><div class="line">  <span class="comment">// *** fields ***</span></div><div class="line">  <span class="keyword">private</span> BinaryTreenode root; <span class="comment">// ptr to the root of the BST</span></div><div class="line"></div><div class="line">  <span class="comment">// *** methods ***</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BST</span><span class="params">()</span> </span>&#123; root = <span class="keyword">null</span>; &#125; <span class="comment">// constructor</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Comparable key, Object data)</span> <span class="keyword">throws</span> DuplicateException </span>&#123;...&#125;</div><div class="line">      <span class="comment">// add key and associated data to this BST;</span></div><div class="line">      <span class="comment">// error if key is already there</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Comparable key)</span> </span>&#123;...&#125;</div><div class="line">      <span class="comment">// remove the node containing key from this BST if it is there;</span></div><div class="line">      <span class="comment">// otherwise, do nothing</span></div><div class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">lookup</span><span class="params">(Comparable key)</span> </span>&#123;...&#125;</div><div class="line">     <span class="comment">// if key is in this BST, return its associated data; otherwise, return null</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(PrintWriter p)</span> </span>&#123;...&#125;</div><div class="line">     <span class="comment">// print the values in this BST in sorted order (to p)</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从现在开始，我们将假设BST 只存储 key 值。没有关联数据，我们还假设 <code>null</code> 是一个无效的 key 值(也就是说，如果一些人尝试添加或查询一个 <code>null</code> 值会导致异常)。</p>
+<h2 id="查询函数"><a href="#查询函数" class="headerlink" title="查询函数"></a>查询函数</h2><p>一般情况下，决定给定的值放在BST 中的什么位置，通常我们会从树的根节点开始然后决定从那里查找：</p>
+<ol>
+<li>是不是根节点</li>
+<li>也许是要的左子树</li>
+<li>也许是根的右子树</li>
+</ol>
+<p>还有两种基本情况：</p>
+<ol>
+<li>树是空的 ，返回false</li>
+<li>给定的值是根节点，返回 true</li>
+</ol>
+<p>如果基本情况中不包含，在适当的子树上会循环查找，如果所有的值都小于根(root) 的值就会查找左子树反之就会查找右子树。不可能同时查找两个子树,如果我们查找的值小于根的值，那它只可能在根的左子树，大于也只可能在右子树</p>
+<p><code>lookup</code> 的代码用了一个辅助的递归方法和其同名（也就是说重载了 <code>lookup</code>）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">lookup</span><span class="params">(Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> lookup(root, k);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">lookup</span><span class="params">(BinaryTreenode T, Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (T == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">if</span> (T.getKey().equals(k)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">if</span> (k.compareTo(T.getKey()) &lt; <span class="number">0</span>) &#123;</div><div class="line">       	 <span class="comment">// k &lt; this node's key; look in left subtree</span></div><div class="line">		<span class="keyword">return</span> lookup(T.getLeft(), k);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">         <span class="comment">// k &gt; this node's key; look in right subtree</span></div><div class="line">		<span class="keyword">return</span> lookup(T.getRight(), k);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>让我们用下面这个 BST 来阐明一下工作原理：</p>
+<p><img src="../images/二叉树/lookupBST.jpg" alt=""></p>
+<p>​        </p>
+<p>我们查找<code>12</code></p>
+<p><img src="../images/二叉树/lookup12.jpg" alt=""></p>
+<p>​    </p>
+<ol>
+<li>12小于13所以来到左子树</li>
+<li>12大于9 所以到右子树</li>
+<li>找到了！</li>
+</ol>
+<p>我们查找<code>15</code> 会发生什么    </p>
+<p><img src="../images/二叉树/lookup15.jpg" alt=""></p>
+<p>​    </p>
+<ol>
+<li>15大于13查找右子树</li>
+<li>15小于16查找左子树</li>
+<li>左子树不存在返回 false</li>
+</ol>
+<p>BST 中查找一个值需要消耗多少时间呢？注意一次查找总是从根节点向下到叶节点，在最坏的情况下走过每一个节点最终到叶节点，因此，最坏情况的时间是从根到叶节点最长路径的长度的比例（树的高度）</p>
+<p>通常情况下，我们想知道函数查找存储在树中的值的数量需要多少时间，换句话来说，BST 中节点数量和树高度的关系是什么？这要依赖树的”图形（shape）”。在最坏的情况下所有的节点只有一个子节点，这个树本质上来说就是一个链表结构。举个栗子：</p>
+<p><img src="../images/二叉树/worst-case.png" alt=""></p>
+<p>这棵树有5个节点，并且高度也是5，当搜索数值在16 到 19 或 21 到 19 的时候需要从根节点到叶节点全走一遍，（也包括值为20 的节点）需要与树中节点数量成比的时间。</p>
+<p>在最好的情况下所有节点都有两个子节点且所有叶节点在相同的深度。栗子：</p>
+<p><img src="../images/二叉树/fulltree.jpg" alt=""></p>
+<p>这棵树有7个节点且高度是3，通常一棵树像这样（完全二叉树）高度大约是 log<sub>2</sub>(N)， N 是树节点的个数，公式的值粗略的是用 N 除以 2得到 0 的次数。栗子：</p>
+<p>7/2 = 3      // 除 2 一次<br>3/2 = 1      // 除 2 二次<br>1/2 = 0      // 除 2 三次, 结果为 0 退出</p>
+<p>所以 log<sub>2</sub>(7) 值近似等于3。</p>
+<p>使用 log<sub>2</sub>的原因（而不是 log<sub>3</sub>）是因为在一个 BST 中每个非叶节点都有两个子节点，根的每个子树在整树中的的数量占1/2（大约是），所以从根到叶节点的长度会和我们用 N 除以2 的次数一样。</p>
+<p>然而，当我们使用大 O 记号法来表示时候，我们仅认为 N个节点满二叉树的高度是 O(log N) — 我们舍弃了底数 “2”，因为 log<sub>2</sub>(N) 可以和任意一个常量 k 为底的对数log<sub>k</sub>(N) 成比 ，也就是说 任意常量 B，k 和任意值 N 都有：</p>
+<p>log<sub>B</sub>(N) = log<sub>k</sub>(N) / log<sub>k</sub>(B)</p>
+<p>并且在大 O 记号法中我们通常会省略常数因子。</p>
+<p>总结：在 BST 中查询最坏情况所需时间是 O(树的高度)。在最坏的情况下（一个“链表”树）是 O(N)，N 是树中节点个数，最好的情况下（一个“满”树）是 O(log N)。</p>
+<p>##添加函数</p>
+<p>一个新的节点应该在 BST 的那里？答案很简单：就是你需要用<code>lookup</code> 在哪里找到它！如果你不放在那里那么以后你也不可能找的到。</p>
+<p><code>insert</code> 函数代码在下面，需要注意的是：</p>
+<ol>
+<li>我们假设不允许添加重复的值（如果试图添加一个重复的值会导致异常）。</li>
+<li>BST 类的 <code>insert</code> 方法在树为空的时候只添加key，另外它用了一个辅助的递归方法执行添加操作。</li>
+<li>包含新值的节点总是作为叶节点添加在 BST 中。</li>
+</ol>
+<p>（talk is cheap, show me the code）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Comparable k)</span> <span class="keyword">throws</span> DuplicateException </span>&#123;</div><div class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">        root = <span class="keyword">new</span> BinaryTreenode(k, <span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> insert(root, k);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(BinaryTreenode T, Comparable k)</span> <span class="keyword">throws</span> DuplicateException </span>&#123;</div><div class="line"><span class="comment">// precondition: T != null</span></div><div class="line">    <span class="keyword">if</span> (T.getKey().equals(k)) <span class="keyword">throw</span> <span class="keyword">new</span> DuplicateException();</div><div class="line">    <span class="keyword">if</span> (k.compareTo(T.getKey()) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">// add k as left child of T if it doesn't already have one</span></div><div class="line">        <span class="comment">// else insert into T's left subtree</span></div><div class="line">        <span class="keyword">if</span> (T.getLeft() == <span class="keyword">null</span>) T.setLeft( <span class="keyword">new</span> BinaryTreenode(k, <span class="keyword">null</span>, <span class="keyword">null</span>) );</div><div class="line">        <span class="keyword">else</span> insert(T.getLeft(), k);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// here when k &gt; T's key</span></div><div class="line">        <span class="comment">// insert k as right child of T if it doesn't already have one</span></div><div class="line">        <span class="comment">// else insert into T's right subtree</span></div><div class="line">        <span class="keyword">if</span> (T.getRight() == <span class="keyword">null</span>) T.setRight( <span class="keyword">new</span> BinaryTreenode(k, <span class="keyword">null</span>, <span class="keyword">null</span>) );</div><div class="line">        <span class="keyword">else</span> insert(T.getRight(), k);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>来张图来阐明一下当我们用上面代码向例子中的 BST 添加一个 <code>15</code>  的时候发生了些什么</p>
+<p><img src="../images/二叉树/insert15.jpg" alt=""></p>
+<ol>
+<li>15大于13 所以去右子树</li>
+<li>15小于16去左子树</li>
+<li>所以添加到16 的左子树中作为一个节点</li>
+</ol>
+<p>很容易看出来添加函数的复杂度和查询的的一样，在最坏的情况下一个路径要经过所有的节点到达叶节点</p>
+<h3 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h3><p>As mentioned above, the order in which values are inserted determines what BST is built (inserting the same values in different orders can result in different final BSTs). Draw the BST that results from inserting the values 1 to 7 in each of the following orders (reading from left to right):</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/03/表单验证的思路/" rel="next" title="表单验证的思路">
+                <i class="fa fa-chevron-left"></i> 表单验证的思路
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400"
+               alt="Fu Liu" />
+          <p class="site-author-name" itemprop="name">Fu Liu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/flyliufu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉查找树-Binary-Search-Tree"><span class="nav-number">1.</span> <span class="nav-text">二叉查找树 Binary Search Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现二叉搜索树"><span class="nav-number">1.2.</span> <span class="nav-text">实现二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询函数"><span class="nav-number">1.3.</span> <span class="nav-text">查询函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小测验"><span class="nav-number">1.3.1.</span> <span class="nav-text">小测验</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fu Liu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "c05ff3bcca6e4d2ab2203d81b037e8e8",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("mnghEybRbMmn0L4nJGOpIz0B-gzGzoHsz", "3gyRmnknuevDYYAekIJXbpoL");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
