@@ -95,22 +95,22 @@
 <meta property="og:site_name" content="My way of learning">
 <meta property="og:description" content="二叉查找树 Binary Search Tree转载请注明文章出处，如有侵权请联系 flyliufu@gmail.com 立删。
 概述二叉查找树（binary search tree , BST）是一种特殊且重要的二叉树，在BST 中每个节点存储一些信息包括一个唯一的键值对（Key Value），并且还有可能有一些相关联的数据。一个二叉树当且仅当（iff）是二叉查找树时候，它的每个节点n在二叉树">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/bst1.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/bst2.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/sameBSTs.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/question1.png">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookupBST.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookup12.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/lookup15.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/images/二叉树/worst-case.png">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/fulltree.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/../images/二叉树/insert15.jpg">
-<meta property="og:updated_time" content="2018-02-08T06:29:14.821Z">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/bst1.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/bst2.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/sameBSTs.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/question1.png">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/lookupBST.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/lookup12.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/lookup15.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/worst-case.png">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/fulltree.jpg">
+<meta property="og:image" content="https://flyliufu.github.io/../../../../images/二叉树/insert15.jpg">
+<meta property="og:updated_time" content="2018-02-08T06:55:26.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树">
 <meta name="twitter:description" content="二叉查找树 Binary Search Tree转载请注明文章出处，如有侵权请联系 flyliufu@gmail.com 立删。
 概述二叉查找树（binary search tree , BST）是一种特殊且重要的二叉树，在BST 中每个节点存储一些信息包括一个唯一的键值对（Key Value），并且还有可能有一些相关联的数据。一个二叉树当且仅当（iff）是二叉查找树时候，它的每个节点n在二叉树">
-<meta name="twitter:image" content="https://flyliufu.github.io/../images/二叉树/bst1.jpg">
+<meta name="twitter:image" content="https://flyliufu.github.io/../../../../images/二叉树/bst1.jpg">
 
 
 
@@ -395,13 +395,13 @@
 </code></pre><p>注意：如果允许相同的 key 值出现，那么该节点即可以在 n 的左子树，也可以在 n 的右子树（但不能同时在两边），在这个前提下，下面我们的教程假设不允许重复值出现。</p>
 <p>​    </p>
 <p>​    下面是一些每个节点仅仅存储了一个整型数值的 BST </p>
-<p><img src="../images/二叉树/bst1.jpg" alt="BST"></p>
+<p><img src="../../../../images/二叉树/bst1.jpg" alt="BST"></p>
 <p>​    </p>
 <p>​    下面这些不是 BST</p>
-<p><img src="../images/二叉树/bst2.jpg" alt="非 BST"></p>
+<p><img src="../../../../images/二叉树/bst2.jpg" alt="非 BST"></p>
 <p>左边这个5比6小（应该在左子树4的右子节点），右边这个6比7小（应该在5 的右子节点）。</p>
 <p>注意不止一种 BST 可以存储相同的键值对，举个栗子下面这张图中的两个 BST 都是存储了相同的整型键：</p>
-<p><img src="../images/二叉树/sameBSTs.jpg" alt="非 BST">    </p>
+<p><img src="../../../../images/二叉树/sameBSTs.jpg" alt="非 BST">    </p>
 <p>二叉搜索树很重要的原因是使用BST可以有效地执行以下操作：</p>
 <pre><code>1. 添加键值对
 2. 决定一个键值对在树中的位置
@@ -412,7 +412,7 @@
 <li>以下那些二叉树是BST？哪些不是？为什么？</li>
 <li>用什么排序（preorder 先根排序, postorder 后根排序, inorder 中根排序, or level-order） 可以以顺序输出节点值？</li>
 </ol>
-<p><img src="../images/二叉树/question1.png" alt="非 BST"></p>
+<p><img src="../../../../images/二叉树/question1.png" alt="非 BST"></p>
 <hr>
 <h2 id="实现二叉搜索树"><a href="#实现二叉搜索树" class="headerlink" title="实现二叉搜索树"></a>实现二叉搜索树</h2><p>为了实现一个二叉搜索树（BST）我们将要使用两个类：一个是树节点（tree node）、一个是二叉搜索树本身，下面定义的类是假设节点只存储键值，没有关联数据。因为大多数的 BST 操作都是比较 key 值，我们把 key 的类型设置为<code>Comparable</code> (不是 <code>Object</code>)。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTreenode</span> </span>&#123;</div><div class="line">   <span class="comment">// *** fields ***</span></div><div class="line">   <span class="keyword">private</span> Comparable key;</div><div class="line">   <span class="keyword">private</span> BinaryTreenode left, right;</div><div class="line"></div><div class="line">   <span class="comment">// *** methods ***</span></div><div class="line"></div><div class="line">   <span class="comment">// constructor</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">BinaryTreenode</span><span class="params">(Comparable k, BinaryTreenode l, BinaryTreenode r)</span> </span>&#123;</div><div class="line">       key = k;</div><div class="line">       left = l;</div><div class="line">       right = r;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">// access to fields</span></div><div class="line">   <span class="function"><span class="keyword">public</span> Comparable <span class="title">getKey</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> key;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> BinaryTreenode <span class="title">getLeft</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> left;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> BinaryTreenode <span class="title">getRight</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> right;&#125;</div><div class="line"></div><div class="line">   <span class="comment">// change fields</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(Comparable k)</span> </span>&#123;key = k;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLeft</span><span class="params">(BinaryTreenode l)</span> </span>&#123;left = l;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRight</span><span class="params">(BinaryTreenode r)</span> </span>&#123;right = r;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BST</span> </span>&#123;</div><div class="line">  <span class="comment">// *** fields ***</span></div><div class="line">  <span class="keyword">private</span> BinaryTreenode root; <span class="comment">// ptr to the root of the BST</span></div><div class="line"></div><div class="line">  <span class="comment">// *** methods ***</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BST</span><span class="params">()</span> </span>&#123; root = <span class="keyword">null</span>; &#125; <span class="comment">// constructor</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Comparable key)</span> <span class="keyword">throws</span> DuplicateException </span>&#123;...&#125;</div><div class="line">      <span class="comment">// add key to this BST; error if it is already there</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Comparable key)</span> </span>&#123;...&#125;</div><div class="line">      <span class="comment">// remove the node containing key from this BST if it is there;</span></div><div class="line">      <span class="comment">// otherwise, do nothing</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">lookup</span><span class="params">(Comparable key)</span> </span>&#123;...&#125;</div><div class="line">     <span class="comment">// if key is in this BST, return true; otherwise, return false</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(PrintWriter p)</span> </span>&#123;...&#125;</div><div class="line">     <span class="comment">// print the values in this BST in sorted order (to p)</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -434,10 +434,10 @@
 <p><code>lookup</code> 的代码用了一个辅助的递归方法和其同名（也就是说重载了 <code>lookup</code>）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">lookup</span><span class="params">(Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> lookup(root, k);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">lookup</span><span class="params">(BinaryTreenode T, Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (T == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">if</span> (T.getKey().equals(k)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">if</span> (k.compareTo(T.getKey()) &lt; <span class="number">0</span>) &#123;</div><div class="line">       	 <span class="comment">// k &lt; this node's key; look in left subtree</span></div><div class="line">		<span class="keyword">return</span> lookup(T.getLeft(), k);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">         <span class="comment">// k &gt; this node's key; look in right subtree</span></div><div class="line">		<span class="keyword">return</span> lookup(T.getRight(), k);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>让我们用下面这个 BST 来阐明一下工作原理：</p>
-<p><img src="../images/二叉树/lookupBST.jpg" alt=""></p>
+<p><img src="../../../../images/二叉树/lookupBST.jpg" alt=""></p>
 <p>​        </p>
 <p>我们查找<code>12</code></p>
-<p><img src="../images/二叉树/lookup12.jpg" alt=""></p>
+<p><img src="../../../../images/二叉树/lookup12.jpg" alt=""></p>
 <p>​    </p>
 <ol>
 <li>12小于13所以来到左子树</li>
@@ -445,7 +445,7 @@
 <li>找到了！</li>
 </ol>
 <p>我们查找<code>15</code> 会发生什么    </p>
-<p><img src="../images/二叉树/lookup15.jpg" alt=""></p>
+<p><img src="../../../../images/二叉树/lookup15.jpg" alt=""></p>
 <p>​    </p>
 <ol>
 <li>15大于13查找右子树</li>
@@ -454,10 +454,10 @@
 </ol>
 <p>BST 中查找一个值需要消耗多少时间呢？注意一次查找总是从根节点向下到叶节点，在最坏的情况下走过每一个节点最终到叶节点，因此，最坏情况的时间是从根到叶节点最长路径的长度的比例（树的高度）</p>
 <p>通常情况下，我们想知道函数查找存储在树中的值的数量需要多少时间，换句话来说，BST 中节点数量和树高度的关系是什么？这要依赖树的”图形（shape）”。在最坏的情况下所有的节点只有一个子节点，这个树本质上来说就是一个链表结构。举个栗子：</p>
-<p><img src="/images/二叉树/worst-case.png" alt=""></p>
+<p><img src="../../../../images/二叉树/worst-case.png" alt=""></p>
 <p>这棵树有5个节点，并且高度也是5，当搜索数值在16 到 19 或 21 到 19 的时候需要从根节点到叶节点全走一遍，（也包括值为20 的节点）需要与树中节点数量成比的时间。</p>
 <p>在最好的情况下所有节点都有两个子节点且所有叶节点在相同的深度。栗子：</p>
-<p><img src="../images/二叉树/fulltree.jpg" alt=""></p>
+<p><img src="../../../../images/二叉树/fulltree.jpg" alt=""></p>
 <p>这棵树有7个节点且高度是3，通常一棵树像这样（完全二叉树）高度大约是 log<sub>2</sub>(N)， N 是树节点的个数，公式的值粗略的是用 N 除以 2得到 0 的次数。栗子：</p>
 <p>7/2 = 3      // 除 2 一次<br>3/2 = 1      // 除 2 二次<br>1/2 = 0      // 除 2 三次, 结果为 0 退出</p>
 <p>所以 log<sub>2</sub>(7) 值近似等于3。</p>
@@ -477,7 +477,7 @@
 <p>（talk is cheap, show me the code）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Comparable k)</span> <span class="keyword">throws</span> DuplicateException </span>&#123;</div><div class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">        root = <span class="keyword">new</span> BinaryTreenode(k, <span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> insert(root, k);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(BinaryTreenode T, Comparable k)</span> <span class="keyword">throws</span> DuplicateException </span>&#123;</div><div class="line"><span class="comment">// precondition: T != null</span></div><div class="line">    <span class="keyword">if</span> (T.getKey().equals(k)) <span class="keyword">throw</span> <span class="keyword">new</span> DuplicateException();</div><div class="line">    <span class="keyword">if</span> (k.compareTo(T.getKey()) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">// add k as left child of T if it doesn't already have one</span></div><div class="line">        <span class="comment">// else insert into T's left subtree</span></div><div class="line">        <span class="keyword">if</span> (T.getLeft() == <span class="keyword">null</span>) T.setLeft( <span class="keyword">new</span> BinaryTreenode(k, <span class="keyword">null</span>, <span class="keyword">null</span>) );</div><div class="line">        <span class="keyword">else</span> insert(T.getLeft(), k);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// here when k &gt; T's key</span></div><div class="line">        <span class="comment">// insert k as right child of T if it doesn't already have one</span></div><div class="line">        <span class="comment">// else insert into T's right subtree</span></div><div class="line">        <span class="keyword">if</span> (T.getRight() == <span class="keyword">null</span>) T.setRight( <span class="keyword">new</span> BinaryTreenode(k, <span class="keyword">null</span>, <span class="keyword">null</span>) );</div><div class="line">        <span class="keyword">else</span> insert(T.getRight(), k);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>来张图来阐明一下当我们用上面代码向例子中的 BST 添加一个 <code>15</code>  的时候发生了些什么</p>
-<p><img src="../images/二叉树/insert15.jpg" alt=""></p>
+<p><img src="../../../../images/二叉树/insert15.jpg" alt=""></p>
 <ol>
 <li>15大于13 所以去右子树</li>
 <li>15小于16去左子树</li>
