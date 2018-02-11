@@ -383,9 +383,9 @@
 <p>​                                <img src="/images/二叉树/sameBSTs.jpg" alt="非 BST">    </p>
 <p>二叉搜索树很重要的原因是使用BST可以有效地执行以下操作：</p>
 <pre><code>1. 添加键值对
-2. 决定一个键值对在树中的位置
-3. 从树中删除键值对
-4. 打印排序后的所有键值对
+   2. 决定一个键值对在树中的位置
+   3. 从树中删除键值对
+   4. 打印排序后的所有键值对
 </code></pre><hr>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
 <li>以下那些二叉树是BST？哪些不是？为什么？</li>
@@ -398,6 +398,7 @@
 <p>为了实现 BST 对应每个 key 存储数据我们需要使用下列定义类：(和上面有些不一样，我不会标红)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTreenode</span> </span>&#123;</div><div class="line">   <span class="comment">// *** fields ***</span></div><div class="line">   <span class="keyword">private</span> Comparable key;</div><div class="line">   <span class="keyword">private</span> Object data;</div><div class="line">   <span class="keyword">private</span> BinaryTreenode left, right;</div><div class="line"></div><div class="line">   <span class="comment">// *** methods ***</span></div><div class="line"></div><div class="line">   <span class="comment">// constructor</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">BinaryTreenode</span><span class="params">(Comparable k, Object d, BinaryTreenode l, BinaryTreenode r)</span> </span>&#123;</div><div class="line">       key = k;</div><div class="line">       data = d;</div><div class="line">       left = l;</div><div class="line">       right = r;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   ...</div><div class="line">   <span class="function"><span class="keyword">public</span> Object <span class="title">getData</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> data;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData</span><span class="params">(Object ob)</span> </span>&#123; data = ob; &#125;</div><div class="line">   ...</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BST</span> </span>&#123;</div><div class="line">  <span class="comment">// *** fields ***</span></div><div class="line">  <span class="keyword">private</span> BinaryTreenode root; <span class="comment">// ptr to the root of the BST</span></div><div class="line"></div><div class="line">  <span class="comment">// *** methods ***</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BST</span><span class="params">()</span> </span>&#123; root = <span class="keyword">null</span>; &#125; <span class="comment">// constructor</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Comparable key, Object data)</span> <span class="keyword">throws</span> DuplicateException </span>&#123;...&#125;</div><div class="line">      <span class="comment">// add key and associated data to this BST;</span></div><div class="line">      <span class="comment">// error if key is already there</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Comparable key)</span> </span>&#123;...&#125;</div><div class="line">      <span class="comment">// remove the node containing key from this BST if it is there;</span></div><div class="line">      <span class="comment">// otherwise, do nothing</span></div><div class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">lookup</span><span class="params">(Comparable key)</span> </span>&#123;...&#125;</div><div class="line">     <span class="comment">// if key is in this BST, return its associated data; otherwise, return null</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(PrintWriter p)</span> </span>&#123;...&#125;</div><div class="line">     <span class="comment">// print the values in this BST in sorted order (to p)</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>从现在开始，我们将假设BST 只存储 key 值。没有关联数据，我们还假设 <code>null</code> 是一个无效的 key 值(也就是说，如果一些人尝试添加或查询一个 <code>null</code> 值会导致异常)。</p>
+<hr>
 <h2 id="查询函数"><a href="#查询函数" class="headerlink" title="查询函数"></a>查询函数</h2><p>一般情况下，决定给定的值放在BST 中的什么位置，通常我们会从树的根节点开始然后决定从那里查找：</p>
 <ol>
 <li>是不是根节点</li>
@@ -410,7 +411,7 @@
 <li>给定的值是根节点，返回 true</li>
 </ol>
 <p>如果基本情况中不包含，在适当的子树上会循环查找，如果所有的值都小于根(root) 的值就会查找左子树反之就会查找右子树。不可能同时查找两个子树,如果我们查找的值小于根的值，那它只可能在根的左子树，大于也只可能在右子树</p>
-<p><code>lookup</code> 的代码用了一个辅助的递归方法和其同名（也就是说重载了 <code>lookup</code>）</p>
+<p><code>lookup</code> 的代码用了一个辅助的递归函数和其同名（也就是说重载了 <code>lookup</code>）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">lookup</span><span class="params">(Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> lookup(root, k);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">lookup</span><span class="params">(BinaryTreenode T, Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (T == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">if</span> (T.getKey().equals(k)) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">if</span> (k.compareTo(T.getKey()) &lt; <span class="number">0</span>) &#123;</div><div class="line">       	 <span class="comment">// k &lt; this node's key; look in left subtree</span></div><div class="line">		<span class="keyword">return</span> lookup(T.getLeft(), k);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">         <span class="comment">// k &gt; this node's key; look in right subtree</span></div><div class="line">		<span class="keyword">return</span> lookup(T.getRight(), k);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>让我们用下面这个 BST 来阐明一下工作原理：</p>
 <p><img src="/images/二叉树/lookupBST.jpg" alt=""></p>
@@ -421,9 +422,10 @@
 <ol>
 <li>12小于13所以来到左子树</li>
 <li>12大于9 所以到右子树</li>
-<li>找到了！</li>
+<li><p>找到了！</p>
+<p> 们查找<code>15</code> 会发生什么    </p>
+</li>
 </ol>
-<p>我们查找<code>15</code> 会发生什么    </p>
 <p><img src="/images/二叉树/lookup15.jpg" alt=""></p>
 <p>​    </p>
 <ol>
@@ -445,12 +447,13 @@
 <p>log<sub>B</sub>(N) = log<sub>k</sub>(N) / log<sub>k</sub>(B)</p>
 <p>并且在大 O 记号法中我们通常会省略常数因子。</p>
 <p>总结：在 BST 中查询最坏情况所需时间是 O(树的高度)。在最坏的情况下（一个“链表”树）是 O(N)，N 是树中节点个数，最好的情况下（一个“满”树）是 O(log N)。</p>
+<hr>
 <p>##添加函数</p>
 <p>一个新的节点应该在 BST 的那里？答案很简单：就是你需要用<code>lookup</code> 在哪里找到它！如果你不放在那里那么以后你也不可能找的到。</p>
 <p><code>insert</code> 函数代码在下面，需要注意的是：</p>
 <ol>
 <li>我们假设不允许添加重复的值（如果试图添加一个重复的值会导致异常）。</li>
-<li>BST 类的 <code>insert</code> 方法在树为空的时候只添加key，另外它用了一个辅助的递归方法执行添加操作。</li>
+<li>BST 类的 <code>insert</code> 函数在树为空的时候只添加key，另外它用了一个辅助的递归函数执行添加操作。</li>
 <li>包含新值的节点总是作为叶节点添加在 BST 中。</li>
 </ol>
 <p>（talk is cheap, show me the code）</p>
@@ -463,7 +466,71 @@
 <li>所以添加到16 的左子树中作为一个节点</li>
 </ol>
 <p>很容易看出来添加函数的复杂度和查询的的一样，在最坏的情况下一个路径要经过所有的节点到达叶节点</p>
-<h3 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h3><p>As mentioned above, the order in which values are inserted determines what BST is built (inserting the same values in different orders can result in different final BSTs). Draw the BST that results from inserting the values 1 to 7 in each of the following orders (reading from left to right):</p>
+<h3 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h3><p>如上所说，添加数值的顺序决定了 BST 的创建 （以不同的顺序添加相同的值会得到不同的 BST），以下面每个 1 到 7 数据的顺序绘制出 BST 来（顺序从左到右）</p>
+<ol>
+<li>5 3 7 6 2 1 4</li>
+<li>1 2 3 4 5 6 7</li>
+<li>4 3 5 2 6 1 7</li>
+</ol>
+<hr>
+<h2 id="删除函数"><a href="#删除函数" class="headerlink" title="删除函数"></a>删除函数</h2><p>如你所愿，删除一个节点需要查询定位该节点以删除。下面这是删除函数的大概结构：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Comparable k)</span> </span>&#123;</div><div class="line">    root = delete(root, k);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> BinaryTreenode <span class="title">delete</span><span class="params">(BinaryTreenode T, Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (T == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">if</span> (k.equals(T.getKey())) &#123;</div><div class="line">       <span class="comment">// T is the node to be removed</span></div><div class="line">       <span class="comment">// code must be added here</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (k.compareTo(T.getKey()) &lt; <span class="number">0</span>) &#123;</div><div class="line">        T.setLeft( delete(T.getLeft(), k) );</div><div class="line">	<span class="keyword">return</span> T;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        T.setRight( delete(T.getRight(), k) );</div><div class="line">	<span class="keyword">return</span> T;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>关于这段代码有几点需要注意的</p>
+<ol>
+<li>与<code>insert</code> 和 <code>lookup</code> 函数一样，BST 删除函数也用了一个辅助的，重载函数来做实际的操作。</li>
+<li>如果 <code>k</code> 值不在树中，那么最终将调用辅助函数的 <code>T == null</code> ，不认为这是一个错误，因为在这种情况下树没有改变什么。</li>
+<li>辅助的删除函数返回了一个值（更改树的一个引用（pointer））。为什么下面说：</li>
+</ol>
+<p>如果这个值对应的节点被删除了，有三个情况需要处理：</p>
+<ol>
+<li>删除的节点是个叶节点（没有子节点）。</li>
+<li>删除的节点有一个子节点。</li>
+<li>删除的节点有两个子节点。</li>
+</ol>
+<p>当删除的节点是叶节点时候，我们需要把删除的节点父节点对应的子节点设置为 <code>null</code> （或者如果删除的是根节点那么设置根节点为 <code>null</code> 并且它没有子节点），注意应该用下面之一的方式调用删除函数：</p>
+<ol>
+<li>root = delete(root, k);</li>
+<li>T.setLeft( delete(T.getLeft(), k) );</li>
+<li>T.setRight( delete(T.getRight(), k) );</li>
+</ol>
+<p>如果<code>delete</code> 返回值为 null，也会正确执行函数。</p>
+<p>下面是说明一下如果在 BST 中包含<code>15</code> 时候删除从树中删除时候会发生什么</p>
+<p><img src="/images/二叉树/remove15.jpg" alt=""></p>
+<p>当删除的节点只有一个子节点的时候，我们可以简单的替换那个节点为它子节点然后返回子节点。如例子所示我们从 BST 中删除 <code>16</code>  后就成了（第二图所示）</p>
+<p><img src="/images/二叉树/remove16.jpg" alt=""></p>
+<p>下面的<code>delete</code> 是我们迄今为止讨论的两种情况的代码 （没有标红凑合看吧）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> BinaryTreenode <span class="title">delete</span><span class="params">(BinaryTreenode T, Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (T == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">if</span> (k.equals(T.getKey())) &#123;</div><div class="line">        <span class="comment">// T is the node to be removed</span></div><div class="line">        <span class="keyword">if</span> (T.getLeft() == <span class="keyword">null</span> &amp;&amp; T.getRight() == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (T.getLeft() == <span class="keyword">null</span>) <span class="keyword">return</span> T.getRight();</div><div class="line">        <span class="keyword">if</span> (T.getRight() == <span class="keyword">null</span>) <span class="keyword">return</span> T.getLeft();</div><div class="line"></div><div class="line">        <span class="comment">// here if T has 2 children</span></div><div class="line">        <span class="comment">// code still needs to be added here...</span></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (k.compareTo(T.getKey()) &lt; <span class="number">0</span>) &#123;</div><div class="line">        T.setLeft( delete(T.getLeft(), k) );</div><div class="line">        <span class="keyword">return</span> T;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        T.setRight( delete(T.getRight(), k) );</div><div class="line">        <span class="keyword">return</span> T;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最复杂的情况是将要删除的节点有两个子节点，我们把要删除的节点称作 <code>n</code> 。我们不能把 <code>n</code> 替换为任意一个子节点，因为我们不知道怎么处理另一个，然而我们会替换 <code>n</code> 为另一个节点 <code>x</code> ，然后在树下（递归）删除节点 <code>x</code> </p>
+<p>问题是那个节点可以让我们用来替换节点 <code>n</code> ，我们必须选择一个节点保证树还是一个 BST；也就是说所有<code>n</code> 左子树的值都要比右子树的小，所有 <code>n</code> 节点右子树的值都要比左子树的大。这样的话有两种可能性：在左子树下面的最大值，或者右子树的最小值。我们任意决定一个用右子树的节点（最小值）</p>
+<p>为了找到这个节点，我们只需在右子树中一直去查找左子节点，因为相对小的值总是在左子树上。一旦找到这个节点，我们复制它的 key 值到节点 <code>n</code> ，然后递归删除被复制的节点，下面是删除函数的最终版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> BinaryTreenode <span class="title">delete</span><span class="params">(BinaryTreenode T, Comparable k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (T == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">if</span> (k.equals(T.getKey())) &#123;</div><div class="line">       <span class="comment">// T is the node to be removed</span></div><div class="line">       <span class="keyword">if</span> (T.getLeft() == <span class="keyword">null</span> &amp;&amp; T.getRight() == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">if</span> (T.getLeft() == <span class="keyword">null</span>) <span class="keyword">return</span> T.getRight();</div><div class="line">       <span class="keyword">if</span> (T.getRight() == <span class="keyword">null</span>) <span class="keyword">return</span> T.getLeft();</div><div class="line">       </div><div class="line">       <span class="comment">// here if T has 2 children</span></div><div class="line">       BinaryTreenode tmp = smallestNode(T.getRight());</div><div class="line">       <span class="comment">// copy key field from tmp to T</span></div><div class="line">       T.setKey( tmp.getKey() );</div><div class="line"></div><div class="line">       <span class="comment">// now delete tmp from T's right subtree and return</span></div><div class="line">       T.setRight( delete(T.getRight(), tmp.getKey()) );</div><div class="line">       <span class="keyword">return</span> T;</div><div class="line">       </div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (k.compareTo(T.getKey()) &lt; <span class="number">0</span>) &#123;</div><div class="line">         T.setLeft( delete(T.getLeft(), k) );</div><div class="line">		<span class="keyword">return</span> T;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">         T.setRight( delete(T.getRight(), k) );</div><div class="line">		<span class="keyword">return</span> T;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面这个 BST 树有些不一样，让我们来看看当我们要从树中删除13的时候会发生什么：</p>
+<p><img src="/images/二叉树/remove13.jpg" alt=""></p>
+<ol>
+<li>原始 BST 定位到<code>13</code> 的位置</li>
+<li>进入到右子树</li>
+<li>到左子节点</li>
+<li>再到左子节点，这是最后一个（叶节点）</li>
+<li>把删除节点替换为右子树的叶节点</li>
+<li>删除叶节点。</li>
+</ol>
+<hr>
+<h3 id="小测验-1"><a href="#小测验-1" class="headerlink" title="小测验"></a>小测验</h3><p>尝试写一下上面的辅助函数 <code>smallestNode</code> 。函数定义已经给了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> BinaryTreenode <span class="title">smallestNode</span><span class="params">(BinaryTreenode T)</span></span></div><div class="line"><span class="comment">// precondition: T is not null</span></div><div class="line"><span class="comment">// postcondition: return the node in the subtree rooted at T that</span></div><div class="line"><span class="comment">//                has the smallest value</span></div></pre></td></tr></table></figure>
+<hr>
+<p>删除函数的复杂度是什么样的呢？</p>
+<p>如果被删除的节点只有一个或者没有子节点，那么删除函数从根（root）到那个节点只能“走一条路”。所以最坏的情况下时间和树的高度成正比（和<code>lookup</code> 和 <code>insert</code> 一样）</p>
+<p>如果将要被删除的节点有两个子节点，下面这几点需要执行：</p>
+<ol>
+<li>找到要删除的节点（从根节点到该节点）</li>
+<li>找到右子树最小的节点<code>x</code> （一直向下到叶节点）</li>
+<li>递归去删除节点<code>x</code> （步骤 2 的路径再走一次）</li>
+</ol>
+<p>所以最坏的情况下，从根到叶节点一个路径走了两次。因为我们不考虑常数因子，所以最坏的情况下时间和树的高度成正比</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一个二叉搜索树（BST）可以存储任何实现了<code>Comparable</code> 接口的对象 （也就是说需要定义<code>compareTo</code> 函数）。一个 BST 也可以用来存储 <code>Comparable</code> 对象加一些关联数据。用二叉搜索树（而不是说链表）的优势在于如果树是一个合理的平衡的（图形上来看更像是一棵”满”二叉树，而不是像“链”式树），添加、查询、删除操作全部能以<code>O(log N)</code> 的时间复杂度执行，N 是存储的项目数，而链表虽然添加可以做到<code>O(1)</code> 但删除、查询需要 <code>O(N)</code> 的时间复杂度。</p>
+<p>对数时间复杂度通常要比线性的时间快的多。举个例子：如果 N = 1,000,000；log<sub>2</sub>N = 20。</p>
+<p>当然，记住很重要的一点一个“链表”树（第一个节点只有一个子节点），最坏的时间复杂度对于添加、查询、删除需要<code>O(N)</code>。</p>
+<h2 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h2><p>如有错误欢迎纠错，发送邮件 flyliufu@sina.com 欢迎您的宝贵意见~。</p>
 
           
         
