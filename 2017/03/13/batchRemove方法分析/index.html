@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -32,7 +32,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -66,40 +66,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="JAVA,ArrayList," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="JAVA,ArrayList,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
 
 
 
-<meta name="description" content="​        batchRemove 这个方法是个 private 修饰只能在类内部用，主要用在了removeAll(Collection, Boolean)， retainAll(Collection, Boolean) 这两个方法中，根据第二个参数来决定是只删除集合中数据，还是只保留集合中的数据。
-​    先说变量定义：这里定义一个final 的 Object 数组来接成员变量中的数组中">
+<meta name="description" content="​        batchRemove 这个方法是个 private 修饰只能在类内部用，主要用在了removeAll(Collection, Boolean)， retainAll(Collection, Boolean) 这两个方法中，根据第二个参数来决定是只删除集合中数据，还是只保留集合中的数据。 ​    先说变量定义：这里定义一个final 的 Object 数组来接成员变量中的数组中">
+<meta name="keywords" content="JAVA,ArrayList">
 <meta property="og:type" content="article">
 <meta property="og:title" content="batchRemove方法分析">
 <meta property="og:url" content="https://flyliufu.github.io/2017/03/13/batchRemove方法分析/index.html">
 <meta property="og:site_name" content="My way of learning">
-<meta property="og:description" content="​        batchRemove 这个方法是个 private 修饰只能在类内部用，主要用在了removeAll(Collection, Boolean)， retainAll(Collection, Boolean) 这两个方法中，根据第二个参数来决定是只删除集合中数据，还是只保留集合中的数据。
-​    先说变量定义：这里定义一个final 的 Object 数组来接成员变量中的数组中">
+<meta property="og:description" content="​        batchRemove 这个方法是个 private 修饰只能在类内部用，主要用在了removeAll(Collection, Boolean)， retainAll(Collection, Boolean) 这两个方法中，根据第二个参数来决定是只删除集合中数据，还是只保留集合中的数据。 ​    先说变量定义：这里定义一个final 的 Object 数组来接成员变量中的数组中">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-13T14:58:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="batchRemove方法分析">
-<meta name="twitter:description" content="​        batchRemove 这个方法是个 private 修饰只能在类内部用，主要用在了removeAll(Collection, Boolean)， retainAll(Collection, Boolean) 这两个方法中，根据第二个参数来决定是只删除集合中数据，还是只保留集合中的数据。
-​    先说变量定义：这里定义一个final 的 Object 数组来接成员变量中的数组中">
+<meta name="twitter:description" content="​        batchRemove 这个方法是个 private 修饰只能在类内部用，主要用在了removeAll(Collection, Boolean)， retainAll(Collection, Boolean) 这两个方法中，根据第二个参数来决定是只删除集合中数据，还是只保留集合中的数据。 ​    先说变量定义：这里定义一个final 的 Object 数组来接成员变量中的数组中">
 
 
 
@@ -127,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://flyliufu.github.io/2017/03/13/batchRemove方法分析/"/>
+  <link rel="canonical" href="https://flyliufu.github.io/2017/03/13/batchRemove方法分析/">
 
 
 
@@ -167,7 +166,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">My way of learning</span>
         <span class="logo-line-after"><i></i></span>
@@ -197,7 +196,7 @@
         <li class="menu-item menu-item-home">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -207,7 +206,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -217,7 +216,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -227,7 +226,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -266,7 +265,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fu Liu">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400">
     </span>
 
@@ -309,7 +308,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -380,11 +379,11 @@
         <p>​        <code>batchRemove</code> 这个方法是个 <code>private</code> 修饰只能在类内部用，主要用在了<code>removeAll(Collection, Boolean)</code>， <code>retainAll(Collection, Boolean)</code> 这两个方法中，根据第二个参数来决定是只删除集合中数据，还是只保留集合中的数据。</p>
 <p>​    先说变量定义：这里定义一个<code>final</code> 的 <code>Object</code> 数组来接成员变量中的数组中的值（有什么意义啊？不太明白），还有两个 <code>int</code> 类型的变量 记录读<code>r</code>  和 写 <code>w</code> 还有个 <code>boolean</code> 值记录修改成功标志，<code>try</code>  块中只有一个 <code>for</code> 循环，它的作用是遍历当前数组，然后判断参数集合中是否包含当前的元素是否进 <code>if</code> 就要看参数传的是 <code>true</code> 还是 <code>false</code> 了，不管怎么样只要进了 <code>if</code> 里面后有个操作是把 同一个数组中 <code>w</code> 位置的元素覆盖成 <code>r</code> 位置的元素因为不管<code>r</code> 的是多少进<code>if</code> 块  <code>w</code> 肯定是从<code>0</code>开始的，这样就做到了只保留或只删除集合中的元素的功能（太牛逼了= =，我原来实现这个功能还是创建两个数组。。。）注意走完循环后 <code>r</code> ，<code>w</code> 的值肯定是小于或等于 <code>size</code> 的，</p>
 <p>​    为了方便先模拟一个环境</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyArrayList</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> modCount = <span class="number">0</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> size = <span class="number">6</span>;</div><div class="line">	<span class="keyword">private</span> Object[] elementData = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> &#125;;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">batchRemove</span><span class="params">(Collection&lt;?&gt; c, <span class="keyword">boolean</span> complement)</span> </span>&#123;</div><div class="line">		<span class="keyword">final</span> Object[] elementData = <span class="keyword">this</span>.elementData;</div><div class="line">		<span class="keyword">int</span> r = <span class="number">0</span>, w = <span class="number">0</span>;</div><div class="line">		<span class="keyword">boolean</span> modified = <span class="keyword">false</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="keyword">for</span> (; r &lt; size; r++)</div><div class="line">				<span class="keyword">if</span> (c.contains(elementData[r]) == complement) &#123;</div><div class="line">					elementData[w++] = elementData[r];</div><div class="line">				&#125;</div><div class="line">			System.out.println(String.format(<span class="string">"r value is %d, r value is %d"</span>, r, w));</div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line">			<span class="comment">// Preserve behavioral compatibility with AbstractCollection,</span></div><div class="line">			<span class="comment">// even if c.contains() throws.</span></div><div class="line">			<span class="keyword">if</span> (r != size) &#123;</div><div class="line">				System.arraycopy(elementData, r, elementData, w, size - r);</div><div class="line">				w += size - r;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (w != size) &#123;</div><div class="line">				<span class="comment">// clear to let GC do its work</span></div><div class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = w; i &lt; size; i++)</div><div class="line">					elementData[i] = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">				modCount += size - w;</div><div class="line">				size = w;</div><div class="line">				modified = <span class="keyword">true</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> modified;</div><div class="line">	&#125;</div><div class="line"> 	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>&#123;</div><div class="line">		Objects.requireNonNull(c);</div><div class="line">		<span class="keyword">return</span> batchRemove(c, <span class="keyword">true</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>&#123;</div><div class="line">		Objects.requireNonNull(c);</div><div class="line">		<span class="keyword">return</span> batchRemove(c, <span class="keyword">false</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyArrayList</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> modCount = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> size = <span class="number">6</span>;</span><br><span class="line">	<span class="keyword">private</span> Object[] elementData = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">batchRemove</span><span class="params">(Collection&lt;?&gt; c, <span class="keyword">boolean</span> complement)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">final</span> Object[] elementData = <span class="keyword">this</span>.elementData;</span><br><span class="line">		<span class="keyword">int</span> r = <span class="number">0</span>, w = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">boolean</span> modified = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">for</span> (; r &lt; size; r++)</span><br><span class="line">				<span class="keyword">if</span> (c.contains(elementData[r]) == complement) &#123;</span><br><span class="line">					elementData[w++] = elementData[r];</span><br><span class="line">				&#125;</span><br><span class="line">			System.out.println(String.format(<span class="string">"r value is %d, r value is %d"</span>, r, w));</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="comment">// Preserve behavioral compatibility with AbstractCollection,</span></span><br><span class="line">			<span class="comment">// even if c.contains() throws.</span></span><br><span class="line">			<span class="keyword">if</span> (r != size) &#123;</span><br><span class="line">				System.arraycopy(elementData, r, elementData, w, size - r);</span><br><span class="line">				w += size - r;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (w != size) &#123;</span><br><span class="line">				<span class="comment">// clear to let GC do its work</span></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = w; i &lt; size; i++)</span><br><span class="line">					elementData[i] = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">				modCount += size - w;</span><br><span class="line">				size = w;</span><br><span class="line">				modified = <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> modified;</span><br><span class="line">	&#125;</span><br><span class="line"> 	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>&#123;</span><br><span class="line">		Objects.requireNonNull(c);</span><br><span class="line">		<span class="keyword">return</span> batchRemove(c, <span class="keyword">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>&#123;</span><br><span class="line">		Objects.requireNonNull(c);</span><br><span class="line">		<span class="keyword">return</span> batchRemove(c, <span class="keyword">false</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    里面的数据是写死的这不重要。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">  MyArrayList array = <span class="keyword">new</span> MyArrayList();</div><div class="line">  ArrayList&lt;Integer&gt; collection = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">  collection.add(<span class="number">1</span>);</div><div class="line">  collection.add(<span class="number">2</span>);</div><div class="line">  collection.add(<span class="number">3</span>);</div><div class="line">  array.retainAll(collection);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 输出： r value is 6, w value is 3</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  MyArrayList array = <span class="keyword">new</span> MyArrayList();</span><br><span class="line">  ArrayList&lt;Integer&gt; collection = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">  collection.add(<span class="number">1</span>);</span><br><span class="line">  collection.add(<span class="number">2</span>);</span><br><span class="line">  collection.add(<span class="number">3</span>);</span><br><span class="line">  array.retainAll(collection);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出： r value is 6, w value is 3</span></span><br></pre></td></tr></table></figure>
 <p>​    大概可以理解为 <code>retainAll()</code>  一共做了六次读取操作，其中有三次读取同时做了写入操作。最后数组中也只保留了两个数组的相同的部分，同理 <code>removeAll()</code> 最后结果是只删除了两个集合相同的部分有一点说明一下，在 <code>batchRemove()</code> 处理完数据后有一步操作是把数组中多余出来的空间置空的操作</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="keyword">null</span></div><div class="line"><span class="keyword">null</span></div><div class="line"><span class="keyword">null</span></div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="keyword">null</span></span><br><span class="line"><span class="keyword">null</span></span><br><span class="line"><span class="keyword">null</span></span><br></pre></td></tr></table></figure>
 <p>​    <code>retainAll()</code> 操作结束后原来有六个空间，只剩下了3个元素空下来3个空间被置为了 <code>null</code>  等待 <code>GC</code> 回收操作，但这时候我们也可以手动去释放这些空间，还记得之前说到一个方法 <code>trimToSize()</code> 在这用到了，调用一下这个方法，释放一些本来就不多的手机内存吧。（这个方法我也只明白了一部分，在 <code>finally</code> 块中的代码有些不太理解，希望有兴趣的同学一起来讨论下~~）</p>
 
       
@@ -488,9 +487,7 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400"
-               alt="Fu Liu" />
+          <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400" alt="Fu Liu">
           <p class="site-author-name" itemprop="name">Fu Liu</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -501,7 +498,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -523,7 +520,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -573,10 +570,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

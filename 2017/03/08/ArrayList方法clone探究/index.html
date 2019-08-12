@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -32,7 +32,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -66,21 +66,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="JAVA,Array," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Array,JAVA,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -88,11 +88,13 @@
 
 
 <meta name="description" content="123456789public class Test &amp;#123;	// 源数组	static ArrayList&amp;lt;Bean&amp;gt; beans = new ArrayList&amp;lt;&amp;gt;();	// 目标数组	static ArrayList&amp;lt;Bean&amp;gt; copyBeans = new ArrayList&amp;lt;&amp;gt;();&amp;#125;class Bean &amp;#123;">
+<meta name="keywords" content="Array,JAVA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArrayList方法clone探究">
 <meta property="og:url" content="https://flyliufu.github.io/2017/03/08/ArrayList方法clone探究/index.html">
 <meta property="og:site_name" content="My way of learning">
 <meta property="og:description" content="123456789public class Test &amp;#123;	// 源数组	static ArrayList&amp;lt;Bean&amp;gt; beans = new ArrayList&amp;lt;&amp;gt;();	// 目标数组	static ArrayList&amp;lt;Bean&amp;gt; copyBeans = new ArrayList&amp;lt;&amp;gt;();&amp;#125;class Bean &amp;#123;">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-13T08:48:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArrayList方法clone探究">
@@ -124,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://flyliufu.github.io/2017/03/08/ArrayList方法clone探究/"/>
+  <link rel="canonical" href="https://flyliufu.github.io/2017/03/08/ArrayList方法clone探究/">
 
 
 
@@ -164,7 +166,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">My way of learning</span>
         <span class="logo-line-after"><i></i></span>
@@ -194,7 +196,7 @@
         <li class="menu-item menu-item-home">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -204,7 +206,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -214,7 +216,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -224,7 +226,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -263,7 +265,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fu Liu">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400">
     </span>
 
@@ -306,7 +308,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -374,27 +376,27 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="comment">// 源数组</span></div><div class="line">	<span class="keyword">static</span> ArrayList&lt;Bean&gt; beans = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">	<span class="comment">// 目标数组</span></div><div class="line">	<span class="keyword">static</span> ArrayList&lt;Bean&gt; copyBeans = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bean</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> i;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 源数组</span></span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Bean&gt; beans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	<span class="comment">// 目标数组</span></span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Bean&gt; copyBeans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bean</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    期望是将 <code>beans</code> 中的数据复制到 <code>copyBeans</code> 集合中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    beans.add(<span class="keyword">new</span> Bean(i));</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    beans.add(<span class="keyword">new</span> Bean(i));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​        ·<code>init()</code>方法中我循环创建了<code>10</code> 个对象添加到<code>beans</code> 集合中备用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">  init();</div><div class="line">  copyBeans = (ArrayList&lt;Bean&gt;) beans.clone();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  init();</span><br><span class="line">  copyBeans = (ArrayList&lt;Bean&gt;) beans.clone();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    初始化集合，然后 copy 集合数据赋值给另一个<code>ArrayList</code> 对象实例。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">System.out.println(beans == copyBeans); <span class="comment">//false</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; beans.size(); i++) &#123;</div><div class="line">  System.out.println(beans.get(i).equals(copyBeans.get(i))); <span class="comment">// true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; beans.size(); i++) &#123;</div><div class="line">  System.out.println(beans.get(i) == copyBeans.get(i)); <span class="comment">// true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>​    来看下这几行代码运行结果第一个是<code>false</code> 可以理解是经过 <code>clone()</code> 确实是克隆了一份给了<code>copyBeans</code>，接下来这个也不难懂<code>equals(Object)</code> 这里的<code>equals()</code> 用的是<code>Object</code> 类中的方法，而<code>Object</code> 中这个方法实现实际 就是用 <code>==</code> 来判断和下面这个判断方法其实是一样的，那么在 <code>Java</code> 中对象如果相等证明他们所用的内存是一样的，那是不是这样的用代码来说话（具体这个 <code>equals()</code> 方法介绍请看<a href="http://www.cnblogs.com/chenssy/p/3416195.html" target="_blank" rel="external">这里</a> ）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; beans.size(); i++) &#123;</div><div class="line">  beans.get(i).i = i + <span class="number">3</span>;</div><div class="line">  System.out.println(copyBeans.get(i).i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(beans == copyBeans); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; beans.size(); i++) &#123;</span><br><span class="line">  System.out.println(beans.get(i).equals(copyBeans.get(i))); <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; beans.size(); i++) &#123;</span><br><span class="line">  System.out.println(beans.get(i) == copyBeans.get(i)); <span class="comment">// true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    来看下这几行代码运行结果第一个是<code>false</code> 可以理解是经过 <code>clone()</code> 确实是克隆了一份给了<code>copyBeans</code>，接下来这个也不难懂<code>equals(Object)</code> 这里的<code>equals()</code> 用的是<code>Object</code> 类中的方法，而<code>Object</code> 中这个方法实现实际 就是用 <code>==</code> 来判断和下面这个判断方法其实是一样的，那么在 <code>Java</code> 中对象如果相等证明他们所用的内存是一样的，那是不是这样的用代码来说话（具体这个 <code>equals()</code> 方法介绍请看<a href="http://www.cnblogs.com/chenssy/p/3416195.html" target="_blank" rel="noopener">这里</a> ）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; beans.size(); i++) &#123;</span><br><span class="line">  beans.get(i).i = i + <span class="number">3</span>;</span><br><span class="line">  System.out.println(copyBeans.get(i).i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    我给源数组 <code>beans</code> 循环加 <code>3</code> 然后把同位置目标数组中的值打印输出结果所示:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="number">3</span></div><div class="line"><span class="number">4</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="number">6</span></div><div class="line"><span class="number">7</span></div><div class="line"><span class="number">8</span></div><div class="line"><span class="number">9</span></div><div class="line"><span class="number">10</span></div><div class="line"><span class="number">11</span></div><div class="line"><span class="number">12</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure>
 <p>​    也就充值证明了 <code>clone()</code> 后只是开辟了一个空间引用，其真正所指向的还是原来数组的内存空间只要任意一个数组有改变操作另一个也会受到影响这也就是官方注释上说的 Shallow copy。</p>
 <p>​    虽然这个搞明白了但工作中有的时候确实有这个需要<code>clone()</code> 出一个新的数组做操作但又不影响源数组的数据该怎么办呢？我也是个菜鸟目前我能想到的办法也很低级如果拉低了读到博客的人的智商表示抱歉。。。</p>
 <p>​    首先在 <code>Bean</code> 类中增加一个构造函数，参数是本类，然后把参数中的值对应的赋到对应的属性中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bean</span><span class="params">(Bean bean)</span> </span>&#123;</div><div class="line">  <span class="keyword">this</span>.i = bean.i;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bean</span><span class="params">(Bean bean)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.i = bean.i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    创建克隆方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> ArrayList&lt;Bean&gt; <span class="title">myClone</span><span class="params">(ArrayList&lt;Bean&gt; beans)</span> </span>&#123;</div><div class="line">  ArrayList&lt;Bean&gt; localBeans = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; beans.size(); i++) &#123;</div><div class="line">    localBeans.add(<span class="keyword">new</span> Bean(beans.get(i)));</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> localBeans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> ArrayList&lt;Bean&gt; <span class="title">myClone</span><span class="params">(ArrayList&lt;Bean&gt; beans)</span> </span>&#123;</span><br><span class="line">  ArrayList&lt;Bean&gt; localBeans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; beans.size(); i++) &#123;</span><br><span class="line">    localBeans.add(<span class="keyword">new</span> Bean(beans.get(i)));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> localBeans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    替换原来的克隆方法改为自定义的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// copyBeans = (ArrayList&lt;Bean&gt;) beans.clone();</span></div><div class="line">copyBeans = myClone(beans);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// copyBeans = (ArrayList&lt;Bean&gt;) beans.clone();</span></span><br><span class="line">copyBeans = myClone(beans);</span><br></pre></td></tr></table></figure>
 <p>​    剩下的不变再把代码运行一次会发现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="keyword">false</span></div><div class="line"><span class="number">0</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">4</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="number">6</span></div><div class="line"><span class="number">7</span></div><div class="line"><span class="number">8</span></div><div class="line"><span class="number">9</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
 <p>​    哈两个数组完全不会互相干扰了，想怎么改不会影响对方了~~</p>
 
       
@@ -419,9 +421,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
-          
             <a href="/tags/Array/" rel="tag"># Array</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
           
         </div>
       
@@ -498,9 +500,7 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400"
-               alt="Fu Liu" />
+          <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400" alt="Fu Liu">
           <p class="site-author-name" itemprop="name">Fu Liu</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -511,7 +511,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -533,7 +533,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -583,10 +583,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
