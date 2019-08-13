@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Array,JAVA,Android,">
+  <meta name="keywords" content="JAVA,Array,Android,">
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="ArrayList​    先从他的构造函数开始看起： 1234567public ArrayList(int initialCapacity) &amp;#123;  super();  if (initialCapacity &amp;lt; 0) &amp;#123;    throw new IllegalArgumentException(&quot;Illegal Capacity: &quot; + initialCapaci">
-<meta name="keywords" content="Array,JAVA,Android">
+<meta name="description" content="ArrayList先从他的构造函数开始看起：1234567public ArrayList(int initialCapacity) &amp;#123;  super();  if (initialCapacity &amp;lt; 0) &amp;#123;    throw new IllegalArgumentException(&quot;Illegal Capacity: &quot; + initialCapacity);">
+<meta name="keywords" content="JAVA,Array,Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA源码学习之ArrayList (1)">
 <meta property="og:url" content="https://flyliufu.github.io/2017/03/07/JAVA源码学习之ArrayList/index.html">
 <meta property="og:site_name" content="My way of learning">
-<meta property="og:description" content="ArrayList​    先从他的构造函数开始看起： 1234567public ArrayList(int initialCapacity) &amp;#123;  super();  if (initialCapacity &amp;lt; 0) &amp;#123;    throw new IllegalArgumentException(&quot;Illegal Capacity: &quot; + initialCapaci">
+<meta property="og:description" content="ArrayList先从他的构造函数开始看起：1234567public ArrayList(int initialCapacity) &amp;#123;  super();  if (initialCapacity &amp;lt; 0) &amp;#123;    throw new IllegalArgumentException(&quot;Illegal Capacity: &quot; + initialCapacity);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-03-14T05:30:47.000Z">
+<meta property="og:updated_time" content="2019-08-12T06:55:47.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA源码学习之ArrayList (1)">
-<meta name="twitter:description" content="ArrayList​    先从他的构造函数开始看起： 1234567public ArrayList(int initialCapacity) &amp;#123;  super();  if (initialCapacity &amp;lt; 0) &amp;#123;    throw new IllegalArgumentException(&quot;Illegal Capacity: &quot; + initialCapaci">
+<meta name="twitter:description" content="ArrayList先从他的构造函数开始看起：1234567public ArrayList(int initialCapacity) &amp;#123;  super();  if (initialCapacity &amp;lt; 0) &amp;#123;    throw new IllegalArgumentException(&quot;Illegal Capacity: &quot; + initialCapacity);">
 
 
 
@@ -376,8 +376,7 @@
       
 
       
-        <h1 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h1><p>​    先从他的构造函数开始看起：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>();</span><br><span class="line">  <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal Capacity: "</span> + initialCapacity);</span><br><span class="line">  &#125;s</span><br><span class="line">  <span class="keyword">this</span>.elementData = <span class="keyword">new</span> Object[initialCapacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h1><p>先从他的构造函数开始看起：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>();</span><br><span class="line">  <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal Capacity: "</span> + initialCapacity);</span><br><span class="line">  &#125;s</span><br><span class="line">  <span class="keyword">this</span>.elementData = <span class="keyword">new</span> Object[initialCapacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>​    该构造函数接受一个<code>int</code>参数作为该<code>ArrayList</code> 的初始化大小，如果这个值小于0会抛出一个<code>IllegalArgumentException</code>（非法参数）异常，应该没有人这 么二想创建一个长度为<code>-2</code>的集合吧…</p>
 <p>如果参数合法就会实例化一个<code>Object</code> 类型的数组大小为参数的值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">    <span class="keyword">this</span>.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -416,9 +415,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Array/" rel="tag"># Array</a>
-          
             <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/Array/" rel="tag"># Array</a>
           
             <a href="/tags/Android/" rel="tag"># Android</a>
           
@@ -539,7 +538,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
