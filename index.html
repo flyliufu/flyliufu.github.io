@@ -368,8 +368,26 @@
       
         
           
-            <h1 id="内存区域与内存溢出"><a href="#内存区域与内存溢出" class="headerlink" title="内存区域与内存溢出"></a>内存区域与内存溢出</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><pre><code>java 虚拟机在执行 java 程序的过程中会把它所管理的内存划分为若干个不同的数据区域。
-</code></pre><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3>
+            <h1 id="内存区域与内存溢出"><a href="#内存区域与内存溢出" class="headerlink" title="内存区域与内存溢出"></a>内存区域与内存溢出</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><ul>
+<li>java 虚拟机在执行 java 程序的过程中会把它所管理的内存划分为若干个不同的数据区域。<h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3></li>
+<li>一块较小的内存空间，可以看作当前线程所执行的字节码行号指示器</li>
+<li>改变计数器的值选取下一条需要执行字节码指令。（分支、循环、跳转、异常处理、线程恢复等基础功能都依赖这个计数器）</li>
+<li>一个确定时刻一个处理器（多核处理器是一个内核）只会执行一条线程中的指令，为了线程切换后能恢复到正确的执行位置，所以每个线程都需要有一个独立的程序计数器我们称这类内存区域第<code>线程私有</code>内存</li>
+<li>当线程正在执行 java 方法时候记数器记录的是正在执行的虚拟机字节码指令地址，如果是 Native 方法计数器值为空（Undefined）</li>
+<li>此区域是唯一一个在 java 虚拟机规范中没有规定任何 OutOfMemoryError 情况的区域<h3 id="Java-虚拟机栈"><a href="#Java-虚拟机栈" class="headerlink" title="Java 虚拟机栈"></a>Java 虚拟机栈</h3></li>
+<li>线程私有，生命周期与线程相同</li>
+<li>虚拟机栈描述的是 java 方法执行的内存模型，每个方法在执行的同时都会创建一个栈帧（Stack Frame）用于存储局部变量表、操作数栈、动态链接、方法出口等信息。</li>
+<li>局部变量表存放了8种基本数据类型、对象引用（不是对象，reference 类型）、returnAddress 类型（指向一条字节码指令的地址）。</li>
+<li><code>long</code>、<code>double</code> 占用了两个局部空间其余占一个。</li>
+<li>局部变量表所需内存空间在编译期间完成分配，运行方法的时候所需多大空间固定且不变。</li>
+<li>该区域有两种异常状况：如果线程请求栈的深度大于虚拟机允许的深度抛出 StackOverflowError；如果虚拟机栈可以动态扩展，当扩展时无法申请足够的内存抛出 OutOfMemoryError 异常<h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3></li>
+<li>和虚拟机栈发挥的作用相似，该区域为本地方法服务。</li>
+<li>在 HotSpot 虚拟机中该区域和虚拟机栈合并在一起</li>
+<li>会抛出 StackOverflowError OutOfMemoryError<h3 id="java-堆"><a href="#java-堆" class="headerlink" title="java 堆"></a>java 堆</h3></li>
+<li>java 堆是被所有线程共享的一块内存区域，在虚拟机启动时创建</li>
+<li>java 堆从内存回收的角度来看由于采用分代回收算法所以可以分为：新生代、老年代</li>
+</ul>
+
           
         
       
