@@ -96,8 +96,8 @@
 <meta property="og:description" content="了解 jvm 中 java 对象对象创建过程  只讨论普通对象，不包括数组、Class 对象。  虚拟机遇到 new 指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有需要执行相应操作（Chapter 7） 接下来虚拟机为对象分配内存，对象所需大小在类加载完成即可明确。内存分配分为两种方式： 指针碰撞：如果">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://flyliufu.github.io/images/JVM/reference_handle.jpg">
-<meta property="og:image" content="https://flyliufu.github.io/images/JVM/reference_redirect.jpg">
-<meta property="og:updated_time" content="2019-08-25T04:31:23.154Z">
+<meta property="og:image" content="https://flyliufu.github.io/images/JVM/reference_direct.jpg">
+<meta property="og:updated_time" content="2019-08-25T04:35:41.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM-2：了解 jvm 中 java 对象">
 <meta name="twitter:description" content="了解 jvm 中 java 对象对象创建过程  只讨论普通对象，不包括数组、Class 对象。  虚拟机遇到 new 指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有需要执行相应操作（Chapter 7） 接下来虚拟机为对象分配内存，对象所需大小在类加载完成即可明确。内存分配分为两种方式： 指针碰撞：如果">
@@ -422,7 +422,7 @@
 <p> 直接指针会指向堆中实例数据，实例数据中会指向其实际类型数据</p>
 </li>
 </ol>
-<p><img src="/images/JVM/reference_redirect.jpg" alt></p>
+<p><img src="/images/JVM/reference_direct.jpg" alt></p>
 <ul>
 <li>使用本方式的最大好处就是速度更快了，节省了一次指针定位的时间开销，在 HotSpot 中使用的是本方式访问对象 </li>
 </ul>
