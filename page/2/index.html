@@ -258,6 +258,165 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://flyliufu.github.io/2017/03/10/copyOf相关方法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fu Liu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/9735870?v=3&u=33ed681a589c432a123bbdc242b25d56a1a0ac7b&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My way of learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/10/copyOf相关方法总结/" itemprop="url">
+                  copyOf相关方法总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-10T15:23:46+08:00">
+                2017-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/原创/" itemprop="url" rel="index">
+                    <span itemprop="name">原创</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/03/10/copyOf相关方法总结/" class="leancloud_visitors" data-flag-title="copyOf相关方法总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="copyOf"><a href="#copyOf" class="headerlink" title="copyOf"></a>copyOf</h1><p>​    在学习 <code>ArrayList</code> 时候遇到很多地方全用到了 <code>Arrays.copyOf()</code> 方法，搞不清楚这个方法感觉学习 <code>ArrayList</code> 会遇到一些阅读困难啊，所以专门写个关于这个方法及相关方法的学习贴吧。</p>
+<p>​    <code>copyOf()</code> 及其相关方法如此之多光这一个方法就有五六个重载方法但万变不离其宗其实重载方法的含义是一样，这只把几个特殊的方法拿出来研究一下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T[] copyOf(T[] original, <span class="keyword">int</span> newLength) &#123;</span><br><span class="line">  <span class="keyword">return</span> (T[]) copyOf(original, newLength, original.getClass());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    这个方法没什么可说的主要就是调用了一下本类中的另一个方法然后强转下泛型<code>T[]</code> ，接下来看下这个关键的引用 方法是怎么个实现方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T, U&gt; T[] copyOf(U[] original, <span class="keyword">int</span> newLength, Class&lt;? extends T[]&gt; newType) &#123;</span><br><span class="line">  <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">  T[] copy = ((Object) newType == (Object) Object[].class) ? (T[]) <span class="keyword">new</span> Object[newLength] :</span><br><span class="line">  (T[]) Array.newInstance(newType.getComponentType(), newLength);</span><br><span class="line"></span><br><span class="line">  System.arraycopy(original, <span class="number">0</span>, copy, <span class="number">0</span>, Math.min(original.length, newLength));</span><br><span class="line">  <span class="keyword">return</span> copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    这个方法牛逼大了啊，泛型还是两个首先来解释下参数第一个是原始数组参数，第二个参数是新数组的长度，第三个参数是生成后新数组类的类型这个类型必须是个数组类型像 <code>String[].getClass()</code>，<code>Integer[].getClass()</code>，<code>Number[].getClass()</code>，等都可以，但不可以是<code>String.getClass()</code>这种类型好吧，很容易理解。方法代码部分第一句话有点长用了一个三目运算符条件是参数类型是否是<code>Object[]</code> 类型 如果是就直接实例化出一个<code>Object[]</code> 数组长为 <code>newLength</code> ，如果不是。。。就创建出一个数组，<code>Class.getComponentType()</code> 该方法只有当参数是个数组的时候才返回值如果不是数组只返回 <code>null</code> ，不懂就自己写个例子看看。</p>
+<p>​    上一步最终会创建出一个数组，然后调用 <code>System.arraycopy([],int,[],int,int)</code> 这个方法没什么可说的，主要是最后一个参数是告诉方法复制的数组长度是多少，最后返回创建的数组这个方法叫 <code>copyOf</code> 但看方法实现更像是 <code>newAndCopyOf</code> 我是这么理解的有更好的请指点一二谢谢。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] copyOf(<span class="keyword">byte</span>[] original, <span class="keyword">int</span> newLength) &#123;</span><br><span class="line">  <span class="keyword">byte</span>[] copy = <span class="keyword">new</span> <span class="keyword">byte</span>[newLength];</span><br><span class="line">  System.arraycopy(original, <span class="number">0</span>, copy, <span class="number">0</span>, Math.min(original.length, newLength));</span><br><span class="line">  <span class="keyword">return</span> copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    还有很多这种重载方法，但除了类型不一样其他的都是一样的只看一个就可以了，而且这个方法好像也不难。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://flyliufu.github.io/2017/03/08/ArrayList方法clone探究/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -938,7 +1097,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
