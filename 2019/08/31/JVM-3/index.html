@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="垃圾收集器概述首先说明 GC（垃圾收集）并不是 java 会产伴生产物，1960年 MIT 的 Lisp 是第一门真正使用动态内存分配和垃圾收集技术的语言。  垃圾收集需要做的事情：   那些内存需要回收 什么时候回收 怎么回收  java 内存运行时区域的各个部分包括程序计数器、本地方法栈、虚拟机栈这三个区域随线程而生死（在运行期 JIT 会进行优化，但在此暂认为是编译期可知的），这几个区域的回">
+<meta name="description" content="垃圾收集器概述首先说明 GC（垃圾收集）并不是 java 的伴生产物，1960年 MIT 的 Lisp 是第一门真正使用动态内存分配和垃圾收集技术的语言。  垃圾收集需要做的事情：   那些内存需要回收 什么时候回收 怎么回收  java 内存运行时区域的各个部分包括程序计数器、本地方法栈、虚拟机栈这三个区域随线程而生死（在运行期 JIT 会进行优化，但在此暂认为是编译期可知的），这几个区域的回收">
 <meta name="keywords" content="JAVA,JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM-3：垃圾收集器">
 <meta property="og:url" content="https://flyliufu.github.io/2019/08/31/JVM-3/index.html">
 <meta property="og:site_name" content="My way of learning">
-<meta property="og:description" content="垃圾收集器概述首先说明 GC（垃圾收集）并不是 java 会产伴生产物，1960年 MIT 的 Lisp 是第一门真正使用动态内存分配和垃圾收集技术的语言。  垃圾收集需要做的事情：   那些内存需要回收 什么时候回收 怎么回收  java 内存运行时区域的各个部分包括程序计数器、本地方法栈、虚拟机栈这三个区域随线程而生死（在运行期 JIT 会进行优化，但在此暂认为是编译期可知的），这几个区域的回">
+<meta property="og:description" content="垃圾收集器概述首先说明 GC（垃圾收集）并不是 java 的伴生产物，1960年 MIT 的 Lisp 是第一门真正使用动态内存分配和垃圾收集技术的语言。  垃圾收集需要做的事情：   那些内存需要回收 什么时候回收 怎么回收  java 内存运行时区域的各个部分包括程序计数器、本地方法栈、虚拟机栈这三个区域随线程而生死（在运行期 JIT 会进行优化，但在此暂认为是编译期可知的），这几个区域的回收">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-31T07:50:09.791Z">
+<meta property="og:updated_time" content="2019-08-31T07:57:07.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM-3：垃圾收集器">
-<meta name="twitter:description" content="垃圾收集器概述首先说明 GC（垃圾收集）并不是 java 会产伴生产物，1960年 MIT 的 Lisp 是第一门真正使用动态内存分配和垃圾收集技术的语言。  垃圾收集需要做的事情：   那些内存需要回收 什么时候回收 怎么回收  java 内存运行时区域的各个部分包括程序计数器、本地方法栈、虚拟机栈这三个区域随线程而生死（在运行期 JIT 会进行优化，但在此暂认为是编译期可知的），这几个区域的回">
+<meta name="twitter:description" content="垃圾收集器概述首先说明 GC（垃圾收集）并不是 java 的伴生产物，1960年 MIT 的 Lisp 是第一门真正使用动态内存分配和垃圾收集技术的语言。  垃圾收集需要做的事情：   那些内存需要回收 什么时候回收 怎么回收  java 内存运行时区域的各个部分包括程序计数器、本地方法栈、虚拟机栈这三个区域随线程而生死（在运行期 JIT 会进行优化，但在此暂认为是编译期可知的），这几个区域的回收">
 
 
 
@@ -376,7 +376,7 @@
       
 
       
-        <h1 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>首先说明 GC（垃圾收集）并不是 java 会产伴生产物，1960年 MIT 的 <code>Lisp</code> 是第一门真正使用动态内存分配和垃圾收集技术的语言。</p>
+        <h1 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>首先说明 GC（垃圾收集）并不是 java 的伴生产物，1960年 MIT 的 <code>Lisp</code> 是第一门真正使用动态内存分配和垃圾收集技术的语言。</p>
 <ul>
 <li>垃圾收集需要做的事情：</li>
 </ul>
