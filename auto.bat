@@ -1,4 +1,4 @@
 get-date > timestamp.txt
 git add .
-git commit  -m "自动提交"
+git commit  -m "auto commit"
 git push
