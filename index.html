@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>爱的历程</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,10 @@
       margin-bottom: 10px;
     }
 
-    #days, #hours, #minutes, #seconds {
+    #days,
+    #hours,
+    #minutes,
+    #seconds {
       font-weight: bold;
       font-size: 3em;
       color: #ff7f50;
@@ -33,12 +37,14 @@
       h1 {
         font-size: 24px;
       }
+
       p {
         font-size: 16px;
       }
     }
   </style>
 </head>
+
 <body>
   <h1>和大橘子相恋自</h1>
   <p>2021年5月28日到现在已经过了：</p>
@@ -47,36 +53,51 @@
   <p id="minutes"></p>
   <p id="seconds"></p>
 
+  <h1>崽崽目前已经：</h1>
+  <p id="weeks"></p>
   <script>
     // 设置目标日期
-    var targetDate = new Date(2021,4,28,10,55,00);
+    var targetDate = new Date(2021, 4, 28, 10, 55, 00);
+    var babyDate = new Date(2023, 2, 31, 00, 00, 00);
     calc();
+    baby();
     setInterval(() => {
       calc();
+      baby();
     }, 1000);
-    function calc(){
-           // 获取当前时间
-     var now = new Date();
-    // 计算时间差
-    var timeDiff = now.getTime() - targetDate.getTime();
+    function baby(){
+      var now = new Date();
+      // 计算时间差
+      var timeDiff = now.getTime() - babyDate.getTime();
+      // 将时间差转换为天数
+      var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      var week = Math.floor(days / 7);
+      document.getElementById("weeks").innerHTML = week + "周";
+    }
+    function calc() {
+      // 获取当前时间
+      var now = new Date();
+      // 计算时间差
+      var timeDiff = now.getTime() - targetDate.getTime();
 
-    // 将时间差转换为天数
-    var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    document.getElementById("days").innerHTML = days + "天";
+      // 将时间差转换为天数
+      var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      document.getElementById("days").innerHTML = days + "天";
 
-    // 将时间差转换为小时数
-    var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    document.getElementById("hours").innerHTML = hours + "小时";
+      // 将时间差转换为小时数
+      var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById("hours").innerHTML = hours + "小时";
 
-    // 将时间差转换为分钟数
-    var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    document.getElementById("minutes").innerHTML = minutes + "分钟";
+      // 将时间差转换为分钟数
+      var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("minutes").innerHTML = minutes + "分钟";
 
-    // 将时间差转换为秒数
-    var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-    document.getElementById("seconds").innerHTML = seconds + "秒";
+      // 将时间差转换为秒数
+      var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      document.getElementById("seconds").innerHTML = seconds + "秒";
 
     }
   </script>
 </body>
+
 </html>
