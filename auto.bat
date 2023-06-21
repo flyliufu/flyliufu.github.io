@@ -1,4 +1,4 @@
-echo get-date > timestamp.txt
+echo  %time%  > timestamp.txt
 git add .
 git commit  -m "auto commit"
 git push
