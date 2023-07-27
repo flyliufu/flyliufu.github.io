@@ -54,12 +54,12 @@
   <p id="minutes"></p>
   <p id="seconds"></p>
 
-  <h1>崽崽目前已经：</h1>
+  <h1>福福目前已经：</h1>
   <p id="weeks"></p>
   <script>
     // 设置目标日期
-    var targetDate = new Date(2021, 4, 28, 10, 55, 00);
-    var babyDate = new Date(2023, 2, 31, 00, 00, 00);
+    var targetDate = new Date(2021, 4, 28, 10, 55, 0);
+    var babyDate = new Date(2023, 2, 31, 0, 0, 0);
     calc();
     baby();
     setInterval(() => {
@@ -72,8 +72,9 @@
       var timeDiff = now.getTime() - babyDate.getTime();
       // 将时间差转换为天数
       var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      var d = days % 7;
       var week = Math.floor(days / 7) + (days % 7 == 0 ? 0 : 1);
-      document.getElementById("weeks").innerHTML = week + "周";
+      document.getElementById("weeks").innerHTML = week + "周 + " + d + "天";
     }
     function calc() {
       // 获取当前时间
